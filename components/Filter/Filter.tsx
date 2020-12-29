@@ -20,11 +20,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    color: '#fff'
   },
   containerTitle: {
     marginBottom: 10,
-    color: '#e5e5e5',
+    color: '#242323',
     fontWeight: 'bold',
   },
   filters: {
