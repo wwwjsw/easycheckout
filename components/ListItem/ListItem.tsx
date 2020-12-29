@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   itemImage: {
     height: 200,
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   containerBlock: {
+    width: '100%',
     marginTop: 10,
     flexGrow: 1,
   },

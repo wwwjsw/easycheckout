@@ -3,10 +3,13 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const FeaturedProduct = () => {
+  let topGradient = ["#e2e95d", "#e2e95d00"];
+  let bottomGradient = ["#e2e95d00", "#e2e95d"];
+
   return(
-    <View>
+    <>
       <LinearGradient
-        colors={["rgba(36, 35, 35, 1)", "rgba(36, 35, 35, 0)"]}
+        colors={topGradient}
         start={{x: 0, y: 0}} end={{x: 0, y: 1}}
         style={[styles.topDefault, styles.infoDefault]}
       >
@@ -16,9 +19,12 @@ const FeaturedProduct = () => {
           Furadeira Bosh 1500Rpm c/ kit broca  p/  madeira e/ou vidro, lorem ipsum.....
         </Text>
       </LinearGradient>
-      <Image source={require('../../assets/makita.jpg')} style={styles.image} />
+      <Image
+        source={require('../../assets/makita.png')}
+        style={styles.image}
+      />
       <LinearGradient
-        colors={["rgba(36, 35, 35, 0)", "rgba(36, 35, 35, 1)"]}
+        colors={bottomGradient}
         style={[styles.bottomDefault, styles.infoDefault]}>
         <Text
           style={[styles.infoText, styles.defaultText]}        
@@ -26,7 +32,7 @@ const FeaturedProduct = () => {
           Promoção: 8x R$79,88
         </Text>
       </LinearGradient>
-    </View>
+    </>
   )
 }
 
@@ -40,7 +46,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   defaultText: {
-    color: "#fff"
+    color: "#242323"
   },
   infoText: {
   },
@@ -53,6 +59,7 @@ const styles = StyleSheet.create({
   image: {
     backgroundColor: '#ffffff03',
     height: 300,
+    width: '100%',
     zIndex: 1,
     borderRadius: 10,
   },

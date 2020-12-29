@@ -12,35 +12,46 @@ export default function App() {
   return (
     <>
       <StatusbarColored
-        backgroundColor="#626262"
-        barStyle="light-content"
+        backgroundColor="#eef488"
+        barStyle="dark-content"
       />
-      <ScrollView style={styles.container}>
-        <DefaultContainer
-          hasPadding
-          spaceAtTop
-          isRow>
-          <>
-            <View style={styles.logo} />
-            <View style={styles.menu} />
-          </>
-        </DefaultContainer>
+      <DefaultContainer
+        hasPadding
+        spaceAtTop
+        isRow
+        noMargin
+        background="#eef488"
+      >
+        <View style={styles.logo} />
+        <View style={styles.menu} />
+      </DefaultContainer>
 
-        <DefaultContainer>
+      <ScrollView style={styles.container}>
+
+        <DefaultContainer
+          overflow={false}
+          spaceAtTop
+          borderRadius
+          background="transparent"
+        >
           <FeaturedProduct />
         </DefaultContainer>
         
         <DefaultContainer
           hasPadding
+          borderRadius
           >
             <Filter />
         </DefaultContainer>
-
-        <DefaultContainer
-          hasPadding
-          >
-            <ListItem />
-        </DefaultContainer>
+        {[1,2,3,4,5,6].map((item) => (
+          <DefaultContainer
+            hasPadding
+            borderRadius
+            key={item}
+            >
+              <ListItem />
+          </DefaultContainer>
+        ))}
       </ScrollView>
     </>
   );
@@ -54,7 +65,7 @@ const styles = StyleSheet.create({
   logo: { 
     width: 30,
     height: 30,
-    backgroundColor: '#e5e5e5',
+    backgroundColor: '#242323',
     borderRadius: 15,
   },
   menu: {
@@ -62,7 +73,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginLeft: 10,
     flexGrow: 1,
-    backgroundColor: '#e5e5e5',
+    backgroundColor: '#242323',
   },
   paragraph: {
     color: 'white',
