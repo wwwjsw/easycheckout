@@ -6,6 +6,7 @@ import DefaultContainer from './components/DefaultContainer/DefaultContainer';
 import StatusbarColored from './components/StatusbarColored/StatusbarColored';
 import FeaturedProduct from './components/FeaturedProduct/FeaturedProduct';
 import Filter from './components/Filter/Filter';
+import ListItem from './components/ListItem/ListItem';
 
 export default function App() {
   return (
@@ -33,6 +34,12 @@ export default function App() {
           hasPadding
           >
             <Filter />
+        </DefaultContainer>
+
+        <DefaultContainer
+          hasPadding
+          >
+            <ListItem />
         </DefaultContainer>
       </ScrollView>
     </>
