@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   containerTitle: {
     marginBottom: helpers.sizes.normal,
-    color: '#242323',
+    color: helpers.colors.contrast,
     fontWeight: 'bold',
   },
   filters: {

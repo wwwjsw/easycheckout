@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
+import helpers from '../../helpers';
 
 const ListItem = () => {
   return (
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   itemName: {
     fontSize: 14,
     fontWeight: 'normal',
-    color: '#242323',
+    color: helpers.colors.black,
   },
   containerPrice: {
     marginTop: 10,
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   itemFullPrice: {
-    color: '#242323',
+    color: helpers.colors.black,
     fontWeight: 'bold',
     fontSize: 12,
   },
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 8,
   },
   itemCreditCardPrice: {
-    color: '#242323',
+    color: helpers.colors.black,
     fontSize: 12,
     fontWeight: 'bold',
   },
