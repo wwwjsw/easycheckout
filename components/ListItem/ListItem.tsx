@@ -6,7 +6,9 @@ const ListItem = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/product.png')}
+        source={
+          props.productImage ? { uri: props.productImage } : require('../../assets/product.png')
+        }
         resizeMode="cover"
         style={styles.itemImage}
       />
