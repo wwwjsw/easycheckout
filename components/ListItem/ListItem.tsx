@@ -1,8 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
-import helpers from '../../helpers';
 
-const ListItem = () => {
+import helpers from '../../helpers';
+import IListItem from '../../interfaces/IListItem';
+
+const ListItem = (props: IListItem) => {
   return (
     <View style={styles.container}>
       <Image
@@ -15,19 +17,21 @@ const ListItem = () => {
 
       <View style={styles.containerBlock}>
         <Text numberOfLines={2} style={styles.itemName}>
-          iPhone 12 Apple 128GB Verde Tela 6,1 - Câm. Dupla 12MP iOS
+          {props.productName}
         </Text>
         <View style={styles.containerPrice}>
           <View>
             <Text style={styles.itemFullPrice}>
-              R$500,
-              <Text style={styles.itemFullPriceCents}>00</Text>
+              {/* R$500,
+              <Text style={styles.itemFullPriceCents}>00</Text> */}
+              {props.productFullPrice}
             </Text>
           </View>
           <View>
             <Text style={styles.itemCreditCardPrice}>
-              8x R$62,50
-              <Text style={styles.itemCreditCardPriceSlug}>sem juros</Text>
+              {/* 8x R$62,50
+              <Text style={styles.itemCreditCardPriceSlug}>sem juros</Text> */}
+              {props.productCreditPrice}
             </Text>
           </View>
         </View>

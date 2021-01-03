@@ -7,8 +7,21 @@ import Filter from './components/Filter/Filter';
 import ListItem from './components/ListItem/ListItem';
 import StatusbarColored from './components/StatusbarColored/StatusbarColored';
 import helpers from './helpers';
+import IListItem from './interfaces/IListItem';
 
 export default function App() {
+  const [dataProducts, setDataProducts] = React.useState<IListItem[]>();
+
+  React.useEffect(() => {
+    loadHomeData();
+  }, []);
+
+  const loadHomeData = async () => {
+    const response = await fetch('https://next.json-generator.com/api/json/get/E1BiJf5TF');
+    const data: IListItem[] = await response.json();
+    setDataProducts(data);
+  };
+
   return (
     <>
       <StatusbarColored backgroundColor={helpers.colors.primary} barStyle="dark-content" />
@@ -25,9 +38,14 @@ export default function App() {
         <DefaultContainer hasPadding borderRadius>
           <Filter />
         </DefaultContainer>
-        {[1, 2, 3, 4, 5, 6].map((item) => (
-          <DefaultContainer hasPadding borderRadius key={item}>
-            <ListItem />
+        {dataProducts?.map((item) => (
+          <DefaultContainer hasPadding borderRadius key={item._id}>
+            <ListItem
+              productImage={item.productImage}
+              productName={item.productName}
+              productFullPrice={item.productFullPrice}
+              productCreditPrice={item.productCreditPrice}
+            />
           </DefaultContainer>
         ))}
       </ScrollView>
