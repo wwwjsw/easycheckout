@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, ActivityIndicator } from 'react-native';
 
 import helpers from '../../helpers';
 import IListItem from '../../interfaces/IListItem';
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
+    backgroundColor: helpers.colors.primary,
   },
   itemImage: {
     height: 200,

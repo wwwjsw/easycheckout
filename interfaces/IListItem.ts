@@ -3,7 +3,7 @@ interface IListItem {
   productName?: string;
   productFullPrice?: string;
   productCreditPrice?: string;
-  _id?: string;
+  _id: string;
 }
 
 export default IListItem;
