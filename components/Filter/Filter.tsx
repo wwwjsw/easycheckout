@@ -1,29 +1,36 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Filter = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.containerTitle}>Departamentos</Text>
-      <View style={styles.filters}>
-        {['eletrônicos', 'Celulares e Telefones', 'Ferramentas e construção', 'bebês', 'Eletrônicos', 'brinquedos e hobbies'].map((item) => (
-          <View style={styles.filter} key={item}>
-            <Text style={styles.filterTitle}>{item}</Text>
-          </View>
-        ))}
-      </View>
+import helpers from '../../helpers';
+
+const Filter = () => (
+  <View style={styles.container}>
+    <Text style={styles.containerTitle}>Departamentos</Text>
+    <View style={styles.filters}>
+      {[
+        'eletrônicos',
+        'Celulares e Telefones',
+        'Ferramentas e construção',
+        'bebês',
+        'Eletrônicos',
+        'brinquedos e hobbies',
+      ].map((item) => (
+        <TouchableOpacity style={styles.filter} key={item}>
+          <Text style={styles.filterTitle}>{item}</Text>
+        </TouchableOpacity>
+      ))}
     </View>
-  )
-}
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
+    width: helpers.sizes.width.full,
   },
   containerTitle: {
-    marginBottom: 10,
-    color: '#242323',
+    marginBottom: helpers.sizes.normal,
+    color: helpers.colors.contrast,
     fontWeight: 'bold',
   },
   filters: {
@@ -32,19 +39,17 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   filter: {
-    marginBottom: 10,
-    marginRight: 10,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: '#e5e5e5',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    marginBottom: helpers.sizes.normal,
+    marginRight: helpers.sizes.normal,
+    borderRadius: helpers.sizes.double,
+    backgroundColor: helpers.colors.blue,
+    paddingHorizontal: helpers.sizes.normal,
+    paddingVertical: helpers.sizes.half,
   },
   filterTitle: {
-    fontSize: 9,
-    lineHeight: 10,
+    fontSize: 12,
     fontWeight: 'bold',
-    color: '#242323',
+    color: helpers.colors.white,
   },
 });
 

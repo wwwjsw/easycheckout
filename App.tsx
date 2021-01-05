@@ -1,70 +1,46 @@
+import { Provider } from 'mobx-react';
 import * as React from 'react';
-import { Text, View, ScrollView, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
-import Constants from 'expo-constants';
+import { View, ScrollView, StyleSheet, AppRegistry } from 'react-native';
 
 import DefaultContainer from './components/DefaultContainer/DefaultContainer';
-import StatusbarColored from './components/StatusbarColored/StatusbarColored';
 import FeaturedProduct from './components/FeaturedProduct/FeaturedProduct';
 import Filter from './components/Filter/Filter';
-import ListItem from './components/ListItem/ListItem';
+import StatusbarColored from './components/StatusbarColored/StatusbarColored';
+import helpers from './helpers';
+import IListItem from './interfaces/IListItem';
+import Products from './scenes/Products';
+import Stores from './stores/RootStores';
 
-export default function App() {
+const App = () => {
+  const [dataProducts, setDataProducts] = React.useState<IListItem[]>();
+
   return (
     <>
-      <StatusbarColored
-        backgroundColor="#626262"
-        barStyle="light-content"
-      />
-      <ScrollView style={styles.container}>
-        <DefaultContainer
-          hasPadding
-          spaceAtTop
-          isRow>
-          <>
-            <View style={styles.logo} />
-            <View style={styles.menu} />
-          </>
-        </DefaultContainer>
+      <Provider {...Stores}>
+        <StatusbarColored backgroundColor={helpers.colors.primary} barStyle="dark-content" />
+        <View style={styles.container}>
+          {/* <DefaultContainer overflow={false} spaceAtTop borderRadius background="transparent">
+            <FeaturedProduct />
+          </DefaultContainer>
 
-        <DefaultContainer>
-          <FeaturedProduct />
-        </DefaultContainer>
-        
-        <DefaultContainer
-          hasPadding
-          >
+          <DefaultContainer hasPadding borderRadius>
             <Filter />
-        </DefaultContainer>
-
-        <DefaultContainer
-          hasPadding
-          >
-            <ListItem />
-        </DefaultContainer>
-      </ScrollView>
+          </DefaultContainer> */}
+          <Products />
+        </View>
+      </Provider>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#242323',
-  },
-  logo: { 
-    width: 30,
-    height: 30,
-    backgroundColor: '#e5e5e5',
-    borderRadius: 15,
-  },
-  menu: {
-    height: 30,
-    borderRadius: 15,
-    marginLeft: 10,
-    flexGrow: 1,
-    backgroundColor: '#e5e5e5',
+    backgroundColor: helpers.colors.black,
   },
   paragraph: {
     color: 'white',
-  }
+  },
 });
+
+export default App;

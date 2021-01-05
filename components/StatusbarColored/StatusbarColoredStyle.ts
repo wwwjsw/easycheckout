@@ -5,6 +5,6 @@ const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? getStatusBarHeight() : StatusBa
 
 export default StyleSheet.create({
   statusBar: {
-    height: STATUSBAR_HEIGHT
+    height: STATUSBAR_HEIGHT,
   }
 });
