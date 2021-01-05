@@ -1,15 +1,7 @@
 import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  FlatList,
-  View,
-  RefreshControl,
-  Text,
-  ActivityIndicator,
-  ListRenderItemInfo,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, FlatList, RefreshControl, ListRenderItemInfo } from 'react-native';
 
 import DefaultContainer from '../components/DefaultContainer/DefaultContainer';
 import ListItem from '../components/ListItem/ListItem';
@@ -20,6 +12,7 @@ function Products(props) {
   const { productsStore } = props;
   const products: IListItem[] = toJS(productsStore.products);
   const isLoadingProducts: boolean = toJS(productsStore.isRefresing);
+  const productsError: string = toJS(productsStore.error);
 
   const _keyExtractor = (ID: string) => ID.toString();
 
@@ -37,24 +30,23 @@ function Products(props) {
     );
   };
 
-  async function fetchProducts() {
-    const { productsStore } = props;
-    await productsStore.fetchUsersAsync();
-  }
-
   React.useEffect(() => {
-    productsStore.fetchUsersAsync();
+    productsStore.fetchProductsAsync();
   }, []);
 
   return (
     <FlatList
       style={styles.container}
       data={products}
-      refreshing={productsStore.isRefresing}
+      refreshing={isLoadingProducts}
       refreshControl={
         <RefreshControl
-          refreshing={productsStore.isRefresing}
-          onRefresh={async () => await productsStore.fetchUsersAsync()}
+          tintColor={helpers.colors.primary}
+          titleColor={helpers.colors.primary}
+          title="Atualizando"
+          refreshing={isLoadingProducts}
+          onRefresh={async () => await productsStore.fetchProductsAsync()}
+          colors={[helpers.colors.primary, helpers.colors.black]}
         />
       }
       extraData={props}
