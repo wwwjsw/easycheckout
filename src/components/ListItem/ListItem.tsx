@@ -9,7 +9,7 @@ const ListItem = (props: IListItem) => {
     <View style={styles.container}>
       <Image
         source={
-          props.productImage ? { uri: props.productImage } : require('../../assets/product.png')
+          props.productImage ? { uri: props.productImage } : require('../../../assets/product.png')
         }
         resizeMode="cover"
         style={styles.itemImage}

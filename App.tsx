@@ -2,14 +2,18 @@ import { Provider } from 'mobx-react';
 import * as React from 'react';
 import { View, ScrollView, StyleSheet, AppRegistry } from 'react-native';
 
-import DefaultContainer from './components/DefaultContainer/DefaultContainer';
-import FeaturedProduct from './components/FeaturedProduct/FeaturedProduct';
-import Filter from './components/Filter/Filter';
-import StatusbarColored from './components/StatusbarColored/StatusbarColored';
-import helpers from './helpers';
-import IListItem from './interfaces/IListItem';
-import Products from './scenes/Products';
-import Stores from './stores/RootStores';
+import DefaultContainer from './src/components/DefaultContainer/DefaultContainer';
+import FeaturedProduct from './src/components/FeaturedProduct/FeaturedProduct';
+import Filter from './src/components/Filter/Filter';
+import StatusbarColored from './src/components/StatusbarColored/StatusbarColored';
+import helpers from './src/helpers';
+import IListItem from './src/interfaces/IListItem';
+import Products from './src/scenes/Products';
+import Stores from './src/stores/RootStores';
+
+if (__DEV__) {
+  import('./ReactotronConfig');
+}
 
 const App = () => {
   const [dataProducts, setDataProducts] = React.useState<IListItem[]>();
@@ -19,13 +23,17 @@ const App = () => {
       <Provider {...Stores}>
         <StatusbarColored backgroundColor={helpers.colors.primary} barStyle="dark-content" />
         <View style={styles.container}>
-          {/* <DefaultContainer overflow={false} spaceAtTop borderRadius background="transparent">
+          {/* MOST RELEVANT PRODUCT OF USER */}
+          <DefaultContainer overflow={false} spaceAtTop borderRadius background="transparent">
             <FeaturedProduct />
           </DefaultContainer>
 
+          {/* MAIN FILTER */}
           <DefaultContainer hasPadding borderRadius>
             <Filter />
-          </DefaultContainer> */}
+          </DefaultContainer>
+
+          {/* PRODUCTS LIST */}
           <Products />
         </View>
       </Provider>

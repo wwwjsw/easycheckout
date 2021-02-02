@@ -19,7 +19,7 @@ const FeaturedProduct = () => {
           Furadeira Bosh 1500Rpm c/ kit broca p/ madeira e/ou vidro, lorem ipsum.....
         </Text>
       </LinearGradient>
-      <Image source={require('../../assets/makita.png')} style={styles.image} />
+      <Image source={require('../../../assets/makita.png')} style={styles.image} />
       <LinearGradient colors={bottomGradient} style={[styles.bottomDefault, styles.infoDefault]}>
         <Text style={[styles.infoText, styles.defaultText]}>Promoção: 8x R$79,88</Text>
       </LinearGradient>
